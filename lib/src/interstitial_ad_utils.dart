@@ -10,7 +10,7 @@ class InterstitialAdUtils {
   static Future<void> show({
     required SharedPreferencesKey key,
   }) async {
-    int count = await key.getInt();
+    int count = await key.getInt(defaultValue: 0);
     count++;
 
     if (count >= key.limit) {
