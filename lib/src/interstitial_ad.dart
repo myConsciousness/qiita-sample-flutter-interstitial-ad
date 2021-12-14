@@ -24,6 +24,9 @@ class InterstitialAd {
   /// Returns true if interstitial ad is already loaded, otherwise false.
   bool get isLoaded => _interstitialAd != null;
 
+  /// Returns true if interstitial ad is not loaded, otherwise false.
+  bool get isNotLoaded => _interstitialAd == null;
+
   Future<void> load() async => await admob.InterstitialAd.load(
         adUnitId: 'ca-app-pub-3940256099942544/1033173712',
         request: const admob.AdRequest(),
@@ -44,7 +47,7 @@ class InterstitialAd {
       );
 
   Future<void> show() async {
-    if (!isLoaded) {
+    if (isNotLoaded) {
       await load();
     }
 
@@ -58,7 +61,6 @@ class InterstitialAd {
         onAdFailedToShowFullScreenContent:
             (final interstitialAd, final adError) async {
           await interstitialAd.dispose();
-          await load();
         },
       );
 
