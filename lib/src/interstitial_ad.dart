@@ -28,7 +28,7 @@ class InterstitialAd {
   bool get isNotLoaded => _interstitialAd == null;
 
   Future<void> load() async => await admob.InterstitialAd.load(
-        adUnitId: 'ca-app-pub-3940256099942544/1033173712',
+        adUnitId: admob.InterstitialAd.testAdUnitId,
         request: const admob.AdRequest(),
         adLoadCallback: admob.InterstitialAdLoadCallback(
           onAdLoaded: (final admob.InterstitialAd interstitialAd) {
